@@ -51,6 +51,7 @@ func (c *Client) send(ctx context.Context,req *http.Request,ms ...middeware.Midd
 		select {
 		case <-ctx.Done():
 			return nil,ctx.Err()
+		default:
 		}
 		resp,err := c.RoundTrip(req)
 		return &http2.Response{Response:resp}, err
